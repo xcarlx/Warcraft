@@ -1,0 +1,49 @@
+{% extends "baselogin.html" %}
+
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+<style>
+.centrar {
+    margin: auto;
+    width: 50%;
+
+}
+</style>
+<div class="row centrar">
+	<div class="col s12 ">
+	  <div class="card teal accent-1 hoverable">
+		    <div class="card-content black-text">
+	      		<span class="card-title">Login</span>
+       			<div class="row">
+				    <form class="col s12">
+				      <div class="row">
+				        <div class="input-field col s12">
+				          <i class="material-icons prefix">account_circle</i>
+				          <input id="txtusuario" type="text" class="validate">
+				          <label for="icon_prefix">Usuario</label>
+				        </div>
+				        <div class="input-field col s12">
+				          <i class="material-icons prefix ">lock_outline</i>
+				          <input id="txtpassword" type="password" class="validate">
+				          <label for="icon_lock_outline">Contraseña</label>
+				        </div>
+				      </div>
+				    </form>
+  				</div>
+	        </div>
+	        <div class="card-action">
+	          <a href="#" id="btnLogin">Iniciar Seccion</a>
+	        </div>
+			</div>
+        </div>
+      </div>
+
+{% endblock %}
+
+
+{% block maestro_scripts %}
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock maestro_scripts %}
