@@ -4,6 +4,6 @@ $('#btnLogin').on("click", function(){
 
 	$.post( "/login/", $("#formLogin").serialize())
 	.done(function( data ) {
-		
+		alert(data);
 	});
 });
