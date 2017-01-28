@@ -1,3 +1,9 @@
 $('#btnLogin').on("click", function(){
-	alert("hola");
+	var usuario = $("#txtusuario").val();
+	var password = $("#txtpassword").val();
+
+	$.post( "/login/", $("#formLogin").serialize())
+	.done(function( data ) {
+		
+	});
 });

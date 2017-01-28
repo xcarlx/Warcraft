@@ -4,6 +4,9 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+import hashlib
+from django.contrib.auth import hashers
+# from django.contrib.auth.hashers import PBKDF2PasswordHasher
 
 # Create your views here.
 
@@ -23,11 +26,15 @@ def Login(request):
 	else:
 		p = request.POST
 		if request.method == 'POST':
-			user = authenticate(username= p['usuario'], password=p['password'])
+			# hasher = PBKDF2PasswordHasher()
+			# hasher.encode(password='password',salt='salt',iterations=30000)
+			user = authenticate(username= p['txtusuario'], password= hashers.make_password(p['txtpassword'],salt='9mzEh5'))
+			print(user)
 			if user is not None:
 				request.session['idusuario'] = user.id
 				try:
-					request.session['persona'] = user.firstname+" "+user.lastname
+					print(user.id)
+					# request.session['persona'] = user.firstname+" "+user.lastname
 					
 					# menu = Menu.objects.all().order_by('menupadre', 'orden')
 					# menus = []
@@ -39,6 +46,6 @@ def Login(request):
 					request.session['persona'] = "Anonimo"
 				return redirect('/')
 			else:
-				return render( request, 'administracion/login.html', {'msj' : "Usuario o contraseña son incorrectas"})
+				return render( request, 'login.html', {'msj' : "Usuario o contraseña son incorrectas"})
 		else:
 			return render(request, 'login.html')
