@@ -72,23 +72,23 @@ TEMPLATES = [
 	},
 ]
 
-AUTH_PASSWORD_VALIDATORS = [
-	{
-		'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-	},
-	{
-		'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-		'OPTIONS': {
-			'min_length': 9,
-		}
-	},
-	{
-		'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-	},
-	{
-		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-	},
-]
+# AUTH_PASSWORD_VALIDATORS = [
+# 	{
+# 		'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+# 	},
+# 	{
+# 		'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+# 		'OPTIONS': {
+# 			'min_length': 9,
+# 		}
+# 	},
+# 	{
+# 		'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+# 	},
+# 	{
+# 		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+# 	},
+# ]
 
 WSGI_APPLICATION = 'warcraft.wsgi.application'
 
@@ -153,6 +153,5 @@ STATICFILES_DIRS = (
 	os.path.join(BASE_DIR,  'warcraft/static'),
 	# os.path.join(BASE_DIR,  'statics'),
 )
-
 MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, PersonaForm
@@ -22,25 +24,21 @@ def EditarPerfil(request):
 			formuser = UserForm(request.POST, instance=request.user)
 			persona = Persona.objects.get(usuario = request.user)
 			formpersona = PersonaForm(request.POST, instance = persona)
-			password = str(request.POST['password'] if request.POST['password'] else "")
-			form = PasswordChangeForm(user=request.user, data=request.POST)
+			# password = str(request.POST['password'] if request.POST['password'] else "")
+			# form = PasswordChangeForm(user=request.user, data=request.POST)
 			if formuser.is_valid():
 				if formpersona.is_valid():
-					if form.is_valid():
-						form.save()
-						update_session_auth_hash(request, form.user)
-						formpersona.save()
-						formuser = formuser.save(commit=False)
+					# if form.is_valid():
+					# 	form.save()
+					# 	update_session_auth_hash(request, form.user)
+					formuser.save()
+					formpersona.save()
 					# data = {"ok":False}
 					# if formuser.check_password(password):
-					# formuser.save()
-						data = {"ok":True}
-						return HttpResponse(json.dumps(data), content_type='application/json')
-					# else:
-					# 	return HttpResponse(json.dumps(data), content_type='application/json')
-					else:
-						return render(request, 'formulario.html',
-						{'form':formuser,'form1':formpersona,'formpass', form})
+					
+					data = {"ok":True}
+					return HttpResponse(json.dumps(data), content_type='application/json')
+					
 				else:
 					return render(request, 'formulario.html',
 					{'form':formuser,'form1':formpersona,})

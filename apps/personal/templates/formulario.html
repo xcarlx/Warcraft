@@ -3,26 +3,19 @@
 
 
 {% for field in form %}
-formpass
-	<div class="row">
-		<div class="input-field col s12">
-			{{field}}
-			<label for="{{field.label}}">{{field.label}}</label>
-		</div>
-		 <span class="red-text text-darken-2">{{ field.errors }}</span>
+  	<div class="row">
+	<div class="input-field col s12">
+		{{field}}
+		<label for="{{field.label}}">{{field.label}}</label>
 	</div>
+ 	<span class="red-text text-darken-2">{{ field.errors }}</span>
+	</div>
+
 {% endfor %}
 {% for field in form1 %}
 	{% if field.name == "foto" %}
-		<div class="file-field input-field">
-			<div class="btn">
-			<span>Foto</span>
-			{{field}}
-			</div>
-			 <div class="file-path-wrapper">
-				<input class="file-path validate" type="text" name="{{field.name}}">
-			</div>
-		</div>
+	{{field}}
+		
 		<span class="red-text text-darken-2">{{ field.errors }}</span>
 	{% else %}
 	<div class="row">

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Group
@@ -11,10 +13,7 @@ class UserForm(forms.ModelForm):
 
 	class Meta:
 		model = User
-		fields = ( 'first_name', 'last_name', 'email','password')
- 		widgets = {
- 			'password': forms.PasswordInput(),
- 		}
+		fields = ( 'first_name', 'last_name', 'email')
 	def __init__(self, *args, **kwargs):
 		super(UserForm, self).__init__(*args, **kwargs)
 		# self.fields['password'].widget = forms.PasswordInput(attrs={'placeholder': ''})
