@@ -16,10 +16,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url,include
-from django.contrib import admin
+from ..personal import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.administracion.urls')),
-    url(r'^personal/', include('apps.personal.urls')),
+    url(r'^$', views.Perfil, name='personal'),
+    url(r'^editar/$', views.EditarPerfil, name='login'),
+    # url(r'^logout/$', views.Logout, name='login'),
 ]

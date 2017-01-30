@@ -1,6 +1,8 @@
-{% extends "baselogin.html" %}
+{% extends "base.html" %}
 
 {% load static %}
+
+
 {% block content %}
 <br>
 <br>
@@ -9,7 +11,9 @@
 .centrar {
     margin: auto;
     width: 50%;
-
+}
+body {
+	background: #00796b
 }
 </style>
 <div class="row centrar">
@@ -24,20 +28,20 @@
 				        <div class="input-field col s12">
 				        {% csrf_token %}
 				          <i class="material-icons prefix">account_circle</i>
-				          <input type="text" class="validate" name="txtusuario">
+				          <input id="txtusuario" type="text" class="validate" name="txtusuario">
 				          <label for="icon_prefix">Usuario</label>
 				        </div>
 				        <div class="input-field col s12">
 				          <i class="material-icons prefix ">lock_outline</i>
-				          <input  type="password" class="validate" name="txtpassword">
+				          <input id="txtpassword" type="password" class="validate" name="txtpassword">
 				          <label for="icon_lock_outline">Contraseña</label>
 				        </div>
 				      </div>
 				    </form>
   				</div>
 	        </div>
-	        <div class="card-action">
-	          <a href="#" id="btnLogin">Iniciar Seccion</a>
+	        <div class="card-action right-align teal darken-1">
+	          <a href="#" id="btnLogin">Iniciar secion</a>
 	        </div>
 			</div>
         </div>
@@ -49,3 +53,6 @@
 {% block maestro_scripts %}
 <script src="{% static 'js/login.js' %}"></script>
 {% endblock maestro_scripts %}
+<script type="text/javascript">
+	Materialize.updateTextFields();
+</script>

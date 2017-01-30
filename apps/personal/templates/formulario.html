@@ -1,0 +1,72 @@
+<div class="row">
+<form id="formPersona" class="col s12">
+
+
+{% for field in form %}
+formpass
+	<div class="row">
+		<div class="input-field col s12">
+			{{field}}
+			<label for="{{field.label}}">{{field.label}}</label>
+		</div>
+		 <span class="red-text text-darken-2">{{ field.errors }}</span>
+	</div>
+{% endfor %}
+{% for field in form1 %}
+	{% if field.name == "foto" %}
+		<div class="file-field input-field">
+			<div class="btn">
+			<span>Foto</span>
+			{{field}}
+			</div>
+			 <div class="file-path-wrapper">
+				<input class="file-path validate" type="text" name="{{field.name}}">
+			</div>
+		</div>
+		<span class="red-text text-darken-2">{{ field.errors }}</span>
+	{% else %}
+	<div class="row">
+		<div class="input-field col s12">
+			{{field}}
+			<label for="{{field.label}}">{{field.label}}</label>
+		</div>
+		<span class="red-text text-darken-2">{{ field.errors }}</span>
+	</div>
+	{% endif %}
+{% endfor %}
+
+{% csrf_token %}
+</form>
+
+
+</div>
+
+<script type="text/javascript">
+	
+	Materialize.updateTextFields();
+	$('.datepicker').pickadate({
+		selectMonths: true, // Creates a dropdown to control month
+		selectYears: 15, // Creates a dropdown of 15 years to control year
+	 	format: 'dd/mm/yyyy',
+ 	 	labelMonthNext: 'Mes siguiente',
+        labelMonthPrev: 'Mes anterior',
+
+// The title label to use for the dropdown selectors
+        labelMonthSelect: 'Selecciona un mes',
+        labelYearSelect: 'Selecciona un año',
+
+// Months and weekdays
+        monthsFull: [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ],
+        monthsShort: [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+        weekdaysFull: [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado' ],
+        weekdaysShort: [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
+
+// Materialize modified
+        weekdaysLetter: [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
+
+// Today and clear
+        today: 'Hoy',
+        clear: 'Limpiar',
+        close: 'Cerrar',
+	});
+</script>

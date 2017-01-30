@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+<style>
+
+body {
+	background: #00796b
+}
+
+</style>
+
+ <div class="container ">
+	 <div class="card-panel">
+	 
+    <div class="col s12 m4 container">
+      <div class="card">
+        <div class="card-image">
+          <img src="{% static 'img/img5.jpg' %}">
+          <span class="card-title">Card Title</span>
+          <button id="btnEditar" class="btn-floating halfway-fab waves-effect waves-light teal accent-4"><i class="material-icons">edit</i></button>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+
+
+ </div>
+       
+</div>
+    
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <div class="center" >
+        <h5 class="teal-text text-darken-2" id="ModalTitulo">Modal Header</h4>
+      </div>
+      <div id="ModalContenido">
+        <p>A bunch of text</p>
+      </div>
+      
+    </div>
+    <div class="modal-footer">
+      <button id="btnGuardarPerfil" class=" modal-action waves-effect waves-green btn-flat">Guardar</button>
+
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block maestro_scripts %}
+	<script src="{% static 'js/perfil.js' %}"></script>
+{% endblock maestro_scripts %}
+<script type="text/javascript">
+	$('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 300
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    });
+    $('.dropdown-button').dropdown('open');
+  $("#btnEditar").leanModal({
+    dismissible: false
+  });
+</script>

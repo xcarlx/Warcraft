@@ -22,4 +22,5 @@ urlpatterns = [
 
     url(r'^$', views.Inicio, name='home'),
     url(r'^login/$', views.Login, name='login'),
+    url(r'^logout/$', views.Logout, name='login'),
 ]
