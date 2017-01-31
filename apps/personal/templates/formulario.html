@@ -1,5 +1,5 @@
 <div class="row">
-<form id="formPersona" class="col s12">
+<form id="formPersona" class="col s12" method="post" enctype="multipart/form-data">
 
 
 {% for field in form %}
@@ -14,9 +14,12 @@
 {% endfor %}
 {% for field in form1 %}
 	{% if field.name == "foto" %}
-	{{field}}
-		
+	<div class="row">
+		<div class="input-field col s12">
+			{{field}}
+		</div>
 		<span class="red-text text-darken-2">{{ field.errors }}</span>
+	</div>
 	{% else %}
 	<div class="row">
 		<div class="input-field col s12">

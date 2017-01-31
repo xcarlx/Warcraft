@@ -25,13 +25,33 @@ $("#btnEditar").on("click", function(){
 
 });	
 $("#btnGuardarPerfil").on("click", function(){
+	var img=$('#id_foto').val();
+	// $.post( "editar/", $( "#formPersona" ).serialize()+'&foto='+encodeURIComponent(img))
+	var formData = new FormData($("#formPersona")[0]);
+	// formData.append('foto', img);
 
-	$.post( "editar/", $( "#formPersona" ).serialize())
-	.done(function( data ) {
-		
-		$('#modal1').find('#ModalContenido').html(data);
+	$.ajax({
+		url: 'editar/',
+		data: formData,
+		processData: false,
+		contentType: false,
+		type: 'POST',
+		success: function(data){
+			if(data["ok"]){
+				Materialize.toast("Datos modificados correctamente", 4000,  'rounded');
+				$('#modal1').modal('close');
+				location.reload();
+        
+			}else{
+				$('#modal1').find('#ModalContenido').html(data);
+			}
+		}
 	});
-	// console.log($( "#formPersona" ).serialize());
+	// $.post( "editar/", $( "#formPersona" ).serialize())
+	// .done(function( data ) {
+		
+	// 	$('#modal1').find('#ModalContenido').html(data);
+	// });
 });	
 
 

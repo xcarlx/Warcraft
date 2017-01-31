@@ -14,7 +14,8 @@ def Perfil(request):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect('/')
 	else:
-		return render(request, 'perfil.html')
+		persona = Persona.objects.get(usuario = request.user)
+		return render(request, 'perfil.html', {'persona':persona})
 
 def EditarPerfil(request):
 	if not request.user.is_authenticated:
@@ -23,7 +24,8 @@ def EditarPerfil(request):
 		if request.method == 'POST':
 			formuser = UserForm(request.POST, instance=request.user)
 			persona = Persona.objects.get(usuario = request.user)
-			formpersona = PersonaForm(request.POST, instance = persona)
+			# formpersona = PersonaForm(request.POST, request.FILES)
+			formpersona = PersonaForm(request.POST, request.FILES, instance = persona)
 			# password = str(request.POST['password'] if request.POST['password'] else "")
 			# form = PasswordChangeForm(user=request.user, data=request.POST)
 			if formuser.is_valid():
@@ -33,8 +35,6 @@ def EditarPerfil(request):
 					# 	update_session_auth_hash(request, form.user)
 					formuser.save()
 					formpersona.save()
-					# data = {"ok":False}
-					# if formuser.check_password(password):
 					
 					data = {"ok":True}
 					return HttpResponse(json.dumps(data), content_type='application/json')

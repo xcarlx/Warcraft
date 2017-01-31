@@ -16,21 +16,10 @@ class UserForm(forms.ModelForm):
 		fields = ( 'first_name', 'last_name', 'email')
 	def __init__(self, *args, **kwargs):
 		super(UserForm, self).__init__(*args, **kwargs)
-		# self.fields['password'].widget = forms.PasswordInput(attrs={'placeholder': ''})
-		# self.fields["password"].widget.attrs['class'] = 'validate'
 		self.fields["first_name"].widget.attrs['class'] = 'validate'
 		self.fields["last_name"].widget.attrs['class'] = 'validate'
 		self.fields["email"].widget.attrs['class'] = 'validate'
 	
-	# def clean(self):
-	# 	cleaned_data = super(UserForm, self).clean()
-	# 	password = cleaned_data.get("password")
-
-	# 	if User.check_password(password):
-	# 		raise forms.ValidationError(
-	# 			"password and confirm_password does not match"
-	# 		)
-
 class PersonaForm(forms.ModelForm):
 
 	class Meta:
@@ -40,9 +29,6 @@ class PersonaForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(PersonaForm, self).__init__(*args, **kwargs)
 		self.fields["fnacimiento"].widget.attrs['class'] = 'datepicker'
-	# 	self.fields["first_name"].widget.attrs['class'] = 'validate'
-	# 	self.fields["last_name"].widget.attrs['class'] = 'validate'
-	# 	self.fields["email"].widget.attrs['class'] = 'validate'
-
+		self.fields["foto"].widget.attrs['accept'] = 'image/*'
 
 
