@@ -6,13 +6,15 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.core.exceptions import ObjectDoesNotExist
+from ..personal.models import Persona
 import json
 # Create your views here.
 
 def Inicio(request):
 	if(request.session.get("idusuario", False)):
 		template = loader.get_template('inicio.html')
-		return HttpResponse(template.render({}, request))
+		persona = Persona.objects.get(usuario = request.user)
+		return HttpResponse(template.render({'persona':persona}, request))
 		# pass
 	else:
 		return render(request, 'inicio.html')
