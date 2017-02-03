@@ -14,6 +14,7 @@
 <body>
 <ul id="dropdown1" class="dropdown-content">
   <li><a href="/personal/">Ver perfil</a></li>
+  <li><a class="modal-trigger waves-effect waves-light" href="#" id="btnCambioPassword">Cambiar contraseña</a></li>
   <li class="divider"></li>
   <li><a href="/logout"><i class="material-icons">lock_outline</i></a></li>
 </ul>
@@ -21,7 +22,7 @@
 
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="/" class="brand-logo"><img src="{% static 'img/wctft.png' %}" ></a>
+      <a id="logo-container" href="/" class="brand-logo"><img src="{% static 'img/wctft1.png' %}" ></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/">Inicio</a></li>
         <li><a href="#">Replays</a></li>
@@ -41,14 +42,14 @@
         <li><div class="userView">
 
           <div class="background">
-            <img src="{% static 'img/img5.jpg' %}">
+            <img src="{% static 'img/img51.jpg' %}">
           </div>
           {% if request.session.persona  %}
             <a href="/personal/"><img class="circle" src="/media/{{persona.foto}}"></a>
             <a href="/personal/"><span class="white-text name">{{request.session.persona}}</span></a>
             <a href="/personal/"><span class="white-text email">{{request.session.email}}</span></a>
           {% else %}
-            <a href="/"><img class="circle" src="{% static 'img/Warcraft-3.png' %}"></a>
+            <a href="/"><img class="circle" src="{% static 'img/Warcraft-31.png' %}"></a>
             <a href="#!name"><span class="white-text name">John Doe</span></a>
             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
           {% endif %}
@@ -73,6 +74,15 @@
     </div>
   </nav>
 
+<div id="modalPassword" class="modal ">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a id="btnGuardarPassword" href="#" class="modal-action waves-effect waves-green btn-flat ">Guardar</a>
+    </div>
+  </div>
 
   {% block content %}{% endblock %}
 
@@ -87,6 +97,7 @@
   {% endblock maestro_scripts %}
 
   <script type="text/javascript">
+   $('.modal').modal();
   $(".button-collapse").sideNav();
    $('.button-collapse').sideNav({
       menuWidth: 300, // Default is 300

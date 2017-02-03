@@ -21,5 +21,6 @@ from ..personal import views
 urlpatterns = [
     url(r'^$', views.Perfil, name='personal'),
     url(r'^editar/$', views.EditarPerfil, name='login'),
+    url(r'^cambiopassword/$', views.CambioPassword, name='login'),
     # url(r'^logout/$', views.Logout, name='login'),
 ]

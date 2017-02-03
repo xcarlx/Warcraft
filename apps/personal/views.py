@@ -55,3 +55,20 @@ def EditarPerfil(request):
 				{
 					'form':edit_form,'form1':persona_form,
 				})
+
+
+def CambioPassword(request):
+	if not request.user.is_authenticated:
+		return HttpResponseRedirect('/')
+	else:
+		if request.method == 'POST':
+			formuser = PasswordChangeForm(user=request.user, data=request.POST)
+			if formuser.is_valid():
+				formuser.save()
+				data = {"ok":True}
+				return HttpResponse(json.dumps(data), content_type='application/json')
+			else:
+				return render(request, 'formpassword.html',{'form':formuser})
+		else:
+			formuser = PasswordChangeForm(user=request.user)
+			return render(request, 'formpassword.html',{'form':formuser})
