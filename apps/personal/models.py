@@ -10,3 +10,5 @@ class Persona(models.Model):
 	fnacimiento = models.DateField(blank=True, null=True)
 	facebook = models.CharField(max_length=100, blank=True, null=True)
 	foto = models.ImageField(upload_to='personal/', blank=True, null=True)
+	nikename = models.CharField(max_length=20, blank=True, null=True)
+	estado = models.BooleanField(default=True)
